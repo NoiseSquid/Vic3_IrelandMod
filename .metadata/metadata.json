@@ -5,7 +5,7 @@
     "version" : "1.0",
     "game_id" : "victoria3",
 	
-    "supported_game_version" : "1.6.2",
+    "supported_game_version" : "1.7.1",
     "short_description" : "Makes Ireland playable by removing all institutions (which Ireland does not have the bureaucracy to support).",
 	
     "tags" : ["province", "new nations"]

@@ -1,7 +1,7 @@
 ﻿namespace = pi_events
 
 # Create the Dominion of Ireland
-# Creates the IRE tag and gives it the modern day Irish territories.
+# Creates the IRE tag and gives it all of Ireland.
 # However, it removes irish as an accepted culture, and sets the state religion
 # to protestant to reflect British colonial rule.
 pi_events.1 = {
@@ -43,12 +43,10 @@ pi_events.1 = {
 				s:STATE_CONNAUGHT.region_state:GBR = { 
 					set_state_owner = c:IRE 
 				}
-				s:STATE_ULSTER = {
-					set_owner_of_provinces = {
-						country = c:IRE
-						provinces = { xA0C0E0 }
-					}
+				s:STATE_ULSTER.region_state:GBR = {
+					set_state_owner = c:IRE
 				}
+
 				c:IRE = {
 					every_scope_state = {
 						set_state_type = incorporated
@@ -67,10 +65,10 @@ pi_events.1 = {
 				if = {
 					limit = {
 						NOT = {
-							has_law = law_type:law_state_religion
+							has_law = law_type:law_freedom_of_conscience
 						}
 					}
-					activate_law = law_type:law_state_religion
+					activate_law = law_type:law_freedom_of_conscience
 				}
 				if = {
 					limit = {
@@ -195,51 +193,6 @@ pi_events.1 = {
 				}
 			}
 		}
-
-		s:STATE_ULSTER = {
-			region_state:IRE = {
-				every_scope_pop = {
-					limit = {
-						OR = {
-							culture = cu:british
-							culture = cu:scottish
-						}
-					}
-					change_pop_religion = {
-						rel:catholic
-						value = 0.9
-					}
-					change_pop_culture = {
-						target = cu:irish
-						value = 0.9
-					}
-				}
-			}
-			region_state:GBR = {
-				every_scope_pop = {
-					limit = {
-						culture = cu:irish
-					}
-					change_pop_culture = {
-						target = cu:scottish
-						value = 0.1
-					}
-					change_pop_culture = {
-						target = cu:british
-						value = 0.1
-					}
-				}
-				every_scope_pop = {
-					limit = {
-						religion = rel:catholic
-					}
-					change_pop_religion = {
-						rel:protestant
-						value = 0.15
-					}
-				}
-			}
-		}
 	}
 
 	option = {
@@ -256,6 +209,7 @@ pi_events.1 = {
 }
 
 
+#Civilising Ireland (pop-up upon activation of JE)
 pi_events.2 = {
 	type = country_event
 	placement = root
@@ -285,6 +239,7 @@ pi_events.2 = {
 }
 
 
+#Successful Reforms (pop-up upon successful completion of JE)
 pi_events.3 = {
 	type = country_event
 	placement = root
@@ -310,13 +265,19 @@ pi_events.3 = {
 		name = pi_events.3.a
 		default_option = yes
 		highlighted_option = yes
+
+		trigger_event = { id = pi_events.4 popup = yes }
 	}
-}pi_events.3 = {
+}
+
+
+#Religious Tensions (after Successful Reforms is completed, and if religion is Protestant)
+pi_events.4 = {
 	type = country_event
 	placement = root
-	title = pi_events.3.t
-	desc = pi_events.3.d
-	flavor = pi_events.3.f
+	title = pi_events.4.t
+	desc = pi_events.4.d
+	flavor = pi_events.4.f
 
 	duration = 1
 
@@ -329,12 +290,101 @@ pi_events.3 = {
 	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
 
 	trigger = {
-		#manually triggered
+		c:IRE ?= THIS
+    	country_has_primary_culture = cu:irish
+    	country_has_state_religion = rel:protestant 
+    	NOT = { has_law = law_type:law_state_atheism }
 	}
 
 	option = {
-		name = pi_events.3.a
+		name = pi_events.4.a
 		default_option = yes
 		highlighted_option = yes
+
+		if = {
+			limit = {
+				any_scope_pop = { 
+					religion = rel:catholic 
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_law = law_type:law_total_separation }
+				}
+				add_radicals = {
+					religion = rel:catholic
+					value = very_large_radicals
+				}
+			}
+			if = {
+				limit = {
+					has_law = law_type:law_total_separation
+				}
+				add_radicals = {
+					religion = rel:catholic
+					value = medium_radicals
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pi_events.4.b
+		trigger = {
+			NOT = {
+				has_law = law_type:law_total_separation
+			}
+		}
+
+		activate_law = law_type:law_total_separation
+		set_state_religion = rel:catholic
+
+		add_radicals = {
+			value = medium_radicals
+		}
+	}
+
+	option = {
+		name = pi_events.4.c
+		trigger = {
+			NOT = {
+				has_law = law_type:law_total_separation
+			}
+		}
+
+		set_state_religion = rel:catholic
+
+		if = {
+			limit = {
+				any_scope_pop = { 
+					religion = rel:protestant 
+				}
+			}
+			add_radicals = {
+				religion = rel:protestant
+				value = very_large_radicals
+			}
+		}
+	}
+
+	option = {
+		name = pi_events.4.e
+		trigger = {
+			has_law = law_type:law_total_separation
+		}
+
+		set_state_religion = rel:protestant
+
+		if = {
+			limit = {
+				any_scope_pop = { 
+					religion = rel:catholic 
+				}
+			}
+			add_radicals = {
+				religion = rel:catholic
+				value = medium_radicals
+			}
+		}
 	}
 }

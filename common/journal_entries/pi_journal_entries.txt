@@ -40,7 +40,6 @@ pi_je_reform_ire = {
     on_complete = {
         trigger_event = { id = pi_events.3 popup = yes }
         add_primary_culture = cu:irish
-        set_state_religion = rel:catholic
     }
 
     should_be_pinned_by_default = yes
