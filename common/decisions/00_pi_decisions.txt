@@ -1,0 +1,14 @@
+﻿pi_decision_main = {
+	is_shown = {
+		exists = c:GBR
+		this = c:GBR
+	}
+
+	possible = {
+		this = c:GBR
+	}
+	
+	when_taken = {
+		trigger_event = { id = pi_events.1 days = 0 popup = yes }
+	}
+}

@@ -1,0 +1,47 @@
+# Reform Ireland away from British colonial rule.
+pi_je_reform_ire = {
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	group = je_group_internal_affairs
+
+    is_shown_when_inactive = {
+       c:IRE ?= THIS
+       NOT = { country_has_primary_culture = cu:irish }
+    }
+
+    #possible = {
+    #    
+    #}
+
+    immediate = {
+    	trigger_event = { id = pi_events.2 popup = yes }
+    }
+
+    complete = {
+        ig:ig_landowners = {
+			is_powerful = no
+			is_in_government = no
+		}
+		OR = {
+			has_law = law_type:law_cultural_exclusion
+			has_law = law_type:law_multicultural
+		}
+		
+		OR = {
+			has_law = law_type:law_wealth_voting
+			has_law = law_type:law_census_voting
+			has_law = law_type:law_universal_suffrage
+			has_law = law_type:law_anarchy
+		}
+		NOT = {	has_law = law_type:law_state_religion }
+		NOT = { has_law = law_type:law_serfdom }
+    }
+
+    on_complete = {
+        trigger_event = { id = pi_events.3 popup = yes }
+        add_primary_culture = cu:irish
+        set_state_religion = rel:catholic
+    }
+
+    should_be_pinned_by_default = yes
+}

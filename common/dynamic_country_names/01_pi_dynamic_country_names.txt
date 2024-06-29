@@ -1,0 +1,30 @@
+IRE = {
+	dynamic_country_name = {
+		name = pi_dyn_c_irish_subject_discriminated
+		adjective = IRE_ADJ
+		
+		is_main_tag_only = yes
+		priority = 1
+		
+		trigger = {
+			scope:actor ?= {
+				is_subject_of = c:GBR
+				NOT = { country_has_primary_culture = cu:irish }
+			}
+		}
+	}
+	dynamic_country_name = {
+		name = pi_dyn_c_irish_subject
+		adjective = IRE_ADJ
+		
+		is_main_tag_only = yes
+		priority = 1
+		
+		trigger = {
+			scope:actor ?= {
+				is_subject_of = c:GBR
+				country_has_primary_culture = cu:irish
+			}
+		}
+	}
+}

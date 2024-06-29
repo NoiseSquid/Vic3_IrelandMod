@@ -1,0 +1,103 @@
+# common variables
+@coa_width = 768
+@coa_height = 512
+@canton_scale_cross_x = @[ ( 333 / coa_width ) + 0.001 ]
+@canton_scale_cross_y = @[ ( 205 / coa_height ) + 0.001 ]
+@canton_scale_sweden_x = @[ ( 255 / coa_width ) + 0.001 ]
+@canton_scale_sweden_y = @[ ( 204 / coa_height ) + 0.001 ]
+@canton_scale_norway_x = @[ ( 192 / coa_width ) + 0.001 ]
+@canton_scale_norway_y = @[ ( 192 / coa_height ) + 0.001 ]
+@canton_scale_denmark_x = @[ ( 220 / coa_width ) + 0.001 ]
+@canton_scale_denmark_y = @[ ( 220 / coa_height ) + 0.001 ]
+@third = @[1/3]
+
+
+IRE = { # Ireland
+	flag_definition = {
+		coa = IRE #yellow harp on green background.
+		allow_overlord_canton = yes
+		coa_with_overlord_canton = IRE_with_canton #harp moved bottom right.
+		priority = 1
+	}
+	#flag_definition = {
+	#	coa = IRE_coa #yellow harp on blue background
+	#	priority = 10
+	#	trigger = { 
+	#		coa_def_absolute_monarchy_flag_trigger = yes
+	#	}
+	#}
+	flag_definition = {
+		coa = IRE_coa #yellow harp on blue background
+		allow_overlord_canton = yes
+		coa_with_overlord_canton = IRE_british_monarchy_with_canton
+		priority = 10
+		trigger = { 
+			coa_def_monarchy_flag_trigger = yes
+			coa_def_catholic_trigger = no
+		}
+	}
+	flag_definition = {
+		coa = IRE_republic #modern tricolour
+		priority = 10
+		trigger = { 
+			coa_def_republic_flag_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = IRE_theocracy #modern tricolour + Papal icon 
+		priority = 10
+		trigger = { 
+			coa_def_theocracy_flag_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = IRE_republic_state_religion #tricolour (yellow rather than orange)
+		priority = 11
+		trigger = {
+			coa_def_catholic_trigger = yes
+			coa_def_republic_flag_trigger = yes
+			coa_def_state_religion_flag_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = IRE_theocracy_state_religion #yellow tricolour + Papal icon
+		priority = 12
+		trigger = { 
+			coa_def_catholic_trigger = yes
+			coa_def_theocracy_flag_trigger = yes
+			coa_def_state_religion_flag_trigger = yes
+			
+		}
+	}
+	flag_definition = {
+		coa = IRE_dictatorship #red saltire on blue background
+		priority = 15
+		trigger = { 
+			coa_def_dictatorship_flag_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = IRE_st_patrick_saltire #red saltire on white background
+		priority = 20
+		trigger = { 
+			coa_def_catholic_trigger = no
+			coa_def_theocracy_flag_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = IRE_easter_rising #literally just text saying "Irish Republic"
+		priority = 20
+		trigger = { 
+			coa_def_republic_flag_trigger = yes
+			coa_def_secessionist_country_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = IRE_fascist #dictatorship but a lighter blue
+		subject_canton = IRE_fascist
+		priority = 1500
+		trigger = { 
+			coa_def_fascist_flag_trigger = yes
+		}
+	}	
+}

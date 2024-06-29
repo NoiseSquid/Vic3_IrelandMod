@@ -1,0 +1,158 @@
+@semy = 0.25
+@third = @[1/3]
+@fifth = @[1/5]
+@sixth = @[1/6]
+
+@canton_scale_cross_x = @[ ( 333 / 768 ) + 0.001 ]
+@canton_scale_cross_y = @[ ( 205 / 512 ) + 0.001 ]
+
+@canton_scale_sweden_x = @[ ( 255 / 768 ) + 0.001 ]
+@canton_scale_sweden_y = @[ ( 204 / 512 ) + 0.001 ]
+
+@uru_canton_height = 0.556
+@NZL_coa_offset = @[3/16] 
+@sm_fra = 0.16
+
+
+IRE = { # Ireland
+	pattern = "pattern_solid.tga"
+	color1 = "green"
+
+	colored_emblem = {
+		texture = "ce_harp_ireland.dds"
+		color1 = "yellow"
+		color2 = "yellow"
+	}
+}
+IRE_with_canton = {		
+	pattern = "pattern_solid.tga"
+	color1 = "green"
+
+	colored_emblem = {		
+		texture = "ce_harp_ireland.dds"
+		color1 = "yellow"
+		color2 = "yellow"
+        instance = { position = { 0.75 0.5 } scale = { 0.75 0.75 } }
+	}	
+}
+IRE_british_monarchy_with_canton = {		
+	pattern = "pattern_solid.tga"
+	color1 = "blue"
+
+	colored_emblem = {		
+		texture = "ce_harp_ireland.dds"
+		color1 = "yellow"
+		color2 = "yellow"
+        instance = { position = { 0.75 0.5 } scale = { 0.75 0.75 } }
+	}	
+}
+IRE_republic = {
+	# Irish tricolor
+	pattern = "pattern_solid.tga"
+	color1 = "green"
+	color2 = "white"
+	color3 = "orange"
+
+	colored_emblem = {
+		texture = "ce_tricolor_vertical.dds"
+		color1 = color2
+		color2 = color3
+	}
+}
+IRE_republic_state_religion = {
+	# Irish tricolor, but with Catholic yellow instead of Protestant Orange
+	pattern = "pattern_solid.tga"
+	color1 = "green"
+	color2 = "white"
+	color3 = "yellow"
+
+	colored_emblem = {
+		texture = "ce_tricolor_vertical.dds"
+		color1 = color2
+		color2 = color3
+	}
+}
+IRE_coa = {
+    sub = {
+        parent = "sub_IRE_coa" 
+        #instance = { scale = { 0.5 0.5 }  } # top left
+    }
+}
+IRE_st_patrick_saltire = {
+	pattern = "pattern_solid.tga"
+	color1 = "white"
+	color2 = "red"
+
+	colored_emblem = {
+		texture = "ce_saltire.dds"
+		color1 = color2
+		color2 = color2
+	}
+}
+IRE_theocracy = {
+	# Irish tricolor, with Papal Tiara
+	pattern = "pattern_solid.tga"
+	color1 = "green"
+	color2 = "white"
+	color3 = "orange"
+
+	colored_emblem = {
+		texture = "ce_tricolor_vertical.dds"
+		color1 = color2
+		color2 = color3
+	}
+
+	textured_emblem = {
+		texture = "te_coa_papal_states_tiara.dds"
+	}
+}
+IRE_theocracy_state_religion = {
+	# Irish tricolor, but with Catholic yellow instead of Protestant Orange. Also has Papal Tiara
+	pattern = "pattern_solid.tga"
+	color1 = "green"
+	color2 = "white"
+	color3 = "yellow"
+
+	colored_emblem = {
+		texture = "ce_tricolor_vertical.dds"
+		color1 = color2
+		color2 = color3
+	}
+
+	textured_emblem = {
+		texture = "te_coa_papal_states_tiara.dds"
+	}
+}
+IRE_dictatorship = {
+
+	pattern = "pattern_solid.tga"
+	color1 = "blue"
+	color2 = "red"
+
+	colored_emblem = {
+		texture = "ce_saltire.dds"
+		color1 = color2
+		color2 = color2
+	}
+}
+IRE_easter_rising = {
+	pattern = "pattern_solid.tga"
+	color1 = "green"
+
+	colored_emblem = {
+		texture = "ce_irish_republic.dds"
+		color1 = "white"
+		color2 = "saffron"
+	}
+}
+IRE_fascist = {	
+	# Blue shirts (saltire can also be fimbriated gold)
+	pattern = "pattern_solid.tga"
+	color1 = "blue_light"
+	
+	colored_emblem = {
+		texture = "ce_saltire.dds"
+		color1 = "red"
+		color2 = "red"
+	}	
+}
