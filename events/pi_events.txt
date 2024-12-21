@@ -266,12 +266,12 @@ pi_events.3 = {
 		default_option = yes
 		highlighted_option = yes
 
-		trigger_event = { id = pi_events.4 popup = yes }
+		#trigger_event = { id = pi_events.4 popup = yes }
 	}
 }
 
 
-#Religious Tensions (after Successful Reforms is completed, and if religion is Protestant)
+#Irish Independence
 pi_events.4 = {
 	type = country_event
 	placement = root
@@ -291,9 +291,8 @@ pi_events.4 = {
 
 	trigger = {
 		c:IRE ?= THIS
-    	country_has_primary_culture = cu:irish
-    	country_has_state_religion = rel:protestant 
-    	NOT = { has_law = law_type:law_state_atheism }
+		is_subject = no
+		NOT = { country_has_state_religion = rel:catholic }
 	}
 
 	option = {
@@ -302,89 +301,21 @@ pi_events.4 = {
 		highlighted_option = yes
 
 		if = {
-			limit = {
-				any_scope_pop = { 
-					religion = rel:catholic 
-				}
+			limit = { NOT = { country_has_primary_culture = cu:irish } }
+			add_primary_culture = cu:irish
+			if = {
+				limit = { country_has_primary_culture = cu:british }
+				remove_primary_culture = cu:british
 			}
 			if = {
-				limit = {
-					NOT = { has_law = law_type:law_total_separation }
-				}
-				add_radicals = {
-					religion = rel:catholic
-					value = very_large_radicals
-				}
-			}
-			if = {
-				limit = {
-					has_law = law_type:law_total_separation
-				}
-				add_radicals = {
-					religion = rel:catholic
-					value = medium_radicals
-				}
+				limit = { country_has_primary_culture = cu:scottish }
+				remove_primary_culture = cu:scottish
 			}
 		}
-	}
-
-	option = {
-		name = pi_events.4.b
-		trigger = {
-			NOT = {
-				has_law = law_type:law_total_separation
-			}
-		}
-
-		activate_law = law_type:law_total_separation
-		set_state_religion = rel:catholic
-
-		add_radicals = {
-			value = medium_radicals
-		}
-	}
-
-	option = {
-		name = pi_events.4.c
-		trigger = {
-			NOT = {
-				has_law = law_type:law_total_separation
-			}
-		}
-
-		set_state_religion = rel:catholic
 
 		if = {
-			limit = {
-				any_scope_pop = { 
-					religion = rel:protestant 
-				}
-			}
-			add_radicals = {
-				religion = rel:protestant
-				value = very_large_radicals
-			}
-		}
-	}
-
-	option = {
-		name = pi_events.4.e
-		trigger = {
-			has_law = law_type:law_total_separation
-		}
-
-		set_state_religion = rel:protestant
-
-		if = {
-			limit = {
-				any_scope_pop = { 
-					religion = rel:catholic 
-				}
-			}
-			add_radicals = {
-				religion = rel:catholic
-				value = medium_radicals
-			}
+			limit = { NOT = { country_has_state_religion = rel:catholic } }
+			set_state_religion = rel:catholic
 		}
 	}
 }

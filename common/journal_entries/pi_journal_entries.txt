@@ -9,9 +9,10 @@ pi_je_reform_ire = {
        NOT = { country_has_primary_culture = cu:irish }
     }
 
-    #possible = {
-    #    
-    #}
+    possible = {
+       c:IRE ?= THIS
+       NOT = { country_has_primary_culture = cu:irish }
+    }
 
     immediate = {
     	trigger_event = { id = pi_events.2 popup = yes }
