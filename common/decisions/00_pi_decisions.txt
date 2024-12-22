@@ -18,12 +18,14 @@ pi_decision_independence = {
 		exists = c:IRE
 		this = c:IRE
 		NOT = { has_state_religion = reL:catholic }
+		NOT = { has_state_religion = rel:atheist }
 	}
 
 	possible = {
 		this = c:IRE
 		is_subject = no
 		NOT = { has_state_religion = reL:catholic }
+		NOT = { has_state_religion = rel:atheist }
 	}
 	
 	when_taken = {
